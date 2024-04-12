@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-example
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: node-example
   template:
     metadata:
       labels:
@@ -16,7 +19,7 @@ spec:
         ports:
         - containerPort: 3000
         resources:
-            limits:
-              cpu: "0.5"
-            requests:
-              cpu: "0.25"
+          limits:
+            cpu: "0.5"
+          requests:
+            cpu: "0.25"
